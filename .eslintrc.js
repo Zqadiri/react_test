@@ -2,23 +2,23 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
+    node: true
   },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'standard-with-typescript',
+    'standard-with-typescript'
   ],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react'],
   rules: {},
   settings: {
     react: {
-      version: 'detect',
-    },
-  },
+      version: 'detect'
+    }
+  }
 }
