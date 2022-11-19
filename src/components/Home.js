@@ -4,13 +4,13 @@ import '../styles/global.css'
 
 const Home = () => {
   return (
-    <html>
-      <Box marginLeft="80px" marginTop="25px">
-        <Heading marginTop="25px" fontFamily="body" fontWeight="extrabold">
+    <>
+      <Box paddingLeft="80px" style={{ backgroundColor: '#f8f8f8' }}>
+        <Heading paddingTop="25px" fontFamily="body" fontWeight="extrabold">
           Home
         </Heading>
       </Box>
-    </html>
+    </>
   )
 }
 
