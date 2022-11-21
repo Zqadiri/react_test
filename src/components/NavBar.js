@@ -21,7 +21,12 @@ const Nav = () => {
           bg={useColorModeValue('white.100', 'white.900')}
           px={6}
         >
-          <Flex className='nav' height={10} alignItems={'center'} justifyContent={'space-between'}>
+          <Flex
+            className="nav"
+            height={10}
+            alignItems={'center'}
+            justifyContent={'space-between'}
+          >
             {/* logo box */}
             <Center>
               <Box
@@ -36,43 +41,44 @@ const Nav = () => {
 
             {/* logo box */}
             <Center>
-                <ButtonGroup spacing="5" marginRight="60px" className='nav' >
-                  <Link href="/" style={{ textDecoration: 'none' }}>
-                    <Button
-                      variant="ghost"
-                      color="peach.400"
-                      size="lg"
-                      _hover={{ bg: '' }}
-                      _active={{
-                        bg: 'white.200',
-                        transform: 'scale(0.90)'
-                      }}
-                      _focus={{ bg: '' }}
-                    >
-                      Home
-                    </Button>
-                  </Link>
-                  <Link href="/login" style={{ textDecoration: 'none' }}>
-                    <Button
-                      fontWeight={400}
-                      variant="solid"
-                      bg="peach.400"
-                      size="lg"
-                      color="white"
-                      borderRadius="15"
-                      width="110px"
-                      height="45px"
-                      _hover={{ bg: '' }}
-                      _active={{
-                        bg: 'peach.200',
-                        transform: 'scale(0.98)'
-                      }}
-                      _focus={{ bg: '' }}
-                    >
-                      Login
-                    </Button>
-                  </Link>
-                </ButtonGroup>
+              <ButtonGroup spacing="5" marginRight="60px" className="nav">
+                <Link href="/" style={{ textDecoration: 'none' }}>
+                  <Button
+                    variant="ghost"
+                    color="peach.400"
+                    size="lg"
+                    _hover={{ bg: '' }}
+                    _active={{
+                      bg: 'white.200',
+                      transform: 'scale(0.90)'
+                    }}
+                    _focus={{ bg: '' }}
+                  >
+                    Home
+                  </Button>
+                </Link>
+                <Link href="/login" style={{ textDecoration: 'none' }}>
+                  <Button
+                    type="submit"
+                    fontWeight={400}
+                    variant="solid"
+                    bg="peach.400"
+                    size="lg"
+                    color="white"
+                    borderRadius="15"
+                    width="110px"
+                    height="45px"
+                    _hover={{ bg: '' }}
+                    _active={{
+                      bg: 'peach.200',
+                      transform: 'scale(0.98)'
+                    }}
+                    _focus={{ bg: '' }}
+                  >
+                    Login
+                  </Button>
+                </Link>
+              </ButtonGroup>
             </Center>
           </Flex>
         </Box>
