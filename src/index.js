@@ -3,6 +3,10 @@ import './styles/global.css'
 import { render } from 'react-dom'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import Nav from './components/NavBar'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import Home from './components/Home'
+import LoginForm from './components/login'
+import Post from './components/posts'
 
 const theme = extendTheme({
   colors: {
@@ -24,6 +28,13 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Nav />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/login" element={<LoginForm />}></Route>
+          <Route exact path="/posts" element={<Post />}></Route>
+        </Routes>
+      </BrowserRouter>
     </ChakraProvider>
   )
 }

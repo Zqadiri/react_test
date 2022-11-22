@@ -9,27 +9,43 @@ import {
   Stack,
   useColorModeValue
 } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
+
+function getFormValues() {
+  const storedValues = localStorage.getItem('form')
+  console.log('stored Values: ' + typeof( storedValues))
+  console.log(JSON.stringify(undefined));
+  if (storedValues === "undefined")
+  {
+    console.log("prrrrrrr");
+    return {
+      email: ''
+    }
+  }
+  return storedValues
+}
 
 const LoginForm = () => {
-  const [values, setValues] = useState([])
+  const navigate = useNavigate('/posts')
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [values, setValues] = useState(() => getFormValues())
 
   useEffect(() => {
-    if (!localStorage.getItem('form') || JSON.parse(localStorage.getItem('form')).length === 0) {
-      localStorage.setItem('form', JSON.stringify(values))
-    }
+
+    console.log(">>>> " + values);
+    localStorage.setItem('form', JSON.stringify(values))
   }, [values])
 
-  function onSubmit (e) {
-    e.preventDefault()
-    alert('An error occurred on the server. Please try again!!!')
-  }
-
-  function onChange (e) {
-    setValues((previousValues) => ({
-      ...previousValues,
-      [e.target.name]: e.target.value
+  function onSubmit(event) {
+    event.preventDefault()
+    setValues((prevValues) => ({
+      prevValues,
+      email: email
     }))
-    console.log(values)
+    console.log("values : " + JSON.stringify(values));
+  navigate('/posts')
   }
 
   return (
@@ -67,8 +83,8 @@ const LoginForm = () => {
               placeholder="email@example.com"
               _placeholder={{ opacity: 0.8, color: 'gray.500' }}
               type="email"
-              onChange={onChange}
-              value={values.email}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
           </FormControl>
           <FormControl id="password" isRequired>
@@ -80,8 +96,8 @@ const LoginForm = () => {
               _placeholder={{ opacity: 0.8, color: 'gray.500' }}
               borderRadius={20}
               type="password"
-              onChange={onChange}
-              value={values.password}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
           </FormControl>
           <Stack spacing={8}>
