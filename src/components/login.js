@@ -15,14 +15,14 @@ function getFormValues() {
   const storedValues = localStorage.getItem('form')
   console.log('stored Values: ' + typeof( storedValues))
   console.log(JSON.stringify(undefined));
-  if (storedValues === "undefined")
+  if (!storedValues)
   {
-    console.log("prrrrrrr");
     return {
-      email: ''
+      email: '',
+      password: ''
     }
   }
-  return storedValues
+  return JSON.parse(storedValues)
 }
 
 const LoginForm = () => {
@@ -33,19 +33,18 @@ const LoginForm = () => {
   const [values, setValues] = useState(() => getFormValues())
 
   useEffect(() => {
-
-    console.log(">>>> " + values);
     localStorage.setItem('form', JSON.stringify(values))
   }, [values])
 
   function onSubmit(event) {
     event.preventDefault()
     setValues((prevValues) => ({
-      prevValues,
-      email: email
-    }))
+        email: email,
+        password: password
+      })
+    )
     console.log("values : " + JSON.stringify(values));
-  navigate('/posts')
+    navigate('/posts') // localStorage does not work
   }
 
   return (
